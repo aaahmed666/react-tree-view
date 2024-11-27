@@ -1,7 +1,16 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "compilerOptions": {
+    "incremental": true, // Enable incremental compilation
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo", // Path for .tsbuildinfo
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "react-jsx", // JSX for React 17+ (adjust for older versions if needed)
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "isolatedModules": true
+  },
+  "include": ["src"]
 }

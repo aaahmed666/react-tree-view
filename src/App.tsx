@@ -1,35 +1,82 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import FileExplorer from "./component/FileExplorer";
+import { FileSystem } from "./type/types";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const Files: FileSystem = {
+    type: "folder",
+    name: "parent",
+    data: [
+      {
+        type: "folder",
+        name: "root",
+        data: [
+          {
+            type: "folder",
+            name: "src",
+            data: [
+              {
+                type: "file",
+                meta: "js",
+                name: "index.js",
+              },
+            ],
+          },
+          {
+            type: "folder",
+            name: "public",
+            data: [
+              {
+                type: "file",
+                meta: "ts",
+                name: "index.ts",
+              },
+            ],
+          },
+          {
+            type: "folder",
+            name: "data",
+            data: [
+              {
+                type: "folder",
+                name: "images",
+                data: [
+                  {
+                    type: "file",
+                    meta: "img",
+                    name: "image.png",
+                  },
+                  {
+                    type: "file",
+                    meta: "img",
+                    name: "image2.webp",
+                  },
+                ],
+              },
+              {
+                type: "file",
+                meta: "svg",
+                name: "logo.svg",
+              },
+            ],
+          },
+          {
+            type: "file",
+            meta: "html",
+            name: "index.html",
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="App">
+        <h1>File Explorer</h1>
+        <FileExplorer data={Files} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
